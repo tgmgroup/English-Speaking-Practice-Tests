@@ -1,4 +1,4 @@
-![English Speaking Practice Tests](https://github.com/tgmgroup/English-speaking-practice-tests/blob/main/assets/images/logo.png)
+![English Speaking Practice Tests](https://github.com/tgmgroup/English-speaking-practice-tests/blob/main/images/logo.png)
 
 # English Speaking Practice Tests
 
@@ -28,7 +28,7 @@ Access the demo here: [English Speaking Practice Tests](https://tgmgroup.github.
 
 # 📁 PROJECT STRUCTURE
 
-/BCT-S-Practice
+````/BCT-S-Practice
 │
 ├── index.html # Main entry point
 ├── style.css # CSS with Dark Mode
@@ -40,9 +40,9 @@ Access the demo here: [English Speaking Practice Tests](https://tgmgroup.github.
 └── /images # Visual assets
 ├── icon-192.png
 ├── icon-512.png
-├── A-Image2.png # Question Image
+├── A-Image2.png # Question Images (Change A to B or C --or D-- and the file extension as necessary)
 ├── A-Image3.png
-└── A-Image4.png
+└── A-Image4.png```
 
 # Contribute
 
@@ -66,3 +66,4 @@ Distributed under the [MIT license](./LICENSE). See [MIT License](https://openso
 [(Back to top)](#table-of-contents)
 
 Project Link: [https://github.com/tgmgroup/English-speaking-practice-tests](https://github.com/tgmgroup/English-speaking-practice-tests)
+````
