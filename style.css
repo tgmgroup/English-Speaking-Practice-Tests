@@ -1,0 +1,421 @@
+/* ---------- 1. VARIABLES & THEMES ---------- */
+:root {
+	/* Primary Colors */
+	--primary: #4caf50;
+	--primary-dark: #388e3c;
+	--dark: #2c3e50;
+	--sidebar-w: 260px;
+
+	/* Light Mode (Default) */
+	--bg-color: #f0f2f5;
+	--container-bg: #ffffff;
+	--text-color: #333333;
+	--text-muted: #7f8c8d;
+	--border-color: #eeeeee;
+	--secondary-btn: #ecf0f1;
+	--secondary-btn-text: #2c3e50;
+	--input-bg: #fdfdfd;
+}
+
+[data-theme="dark"] {
+	/* Dark Mode Overrides */
+	--bg-color: #121212;
+	--container-bg: #1e1e1e;
+	--text-color: #e0e0e0;
+	--text-muted: #a0a0a0;
+	--border-color: #333333;
+	--secondary-btn: #2d2d2d;
+	--secondary-btn-text: #e0e0e0;
+	--input-bg: #252525;
+}
+
+/* ---------- 2. BASE STYLES ---------- */
+* {
+	box-sizing: border-box;
+}
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family:
+		"Inter",
+		-apple-system,
+		sans-serif;
+	color: var(--text-color);
+	background-color: var(--bg-color);
+	transition:
+		background 0.3s ease,
+		color 0.3s ease;
+}
+
+/* ---------- 3. LAYOUT WRAPPER ---------- */
+.layout-wrapper {
+	display: flex;
+	height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+	width: var(--sidebar-w);
+	background: var(--dark);
+	color: white;
+	padding: 40px 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	z-index: 10;
+}
+
+.title {
+	font-size: 1.2rem;
+	font-weight: 800;
+	letter-spacing: 1px;
+	color: var(--primary);
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+.logo {
+	font-size: 1rem;
+	font-weight: 800;
+	letter-spacing: 1px;
+	color: var(--primary);
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+.nav-label {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	opacity: 0.6;
+	margin-bottom: 8px;
+	color: white;
+	text-align: center;
+}
+
+#progressTracker {
+	font-size: 1.1rem;
+	font-weight: 500;
+	margin-bottom: 20px;
+	color: white;
+	text-align: center;
+}
+
+/* Main Content Area */
+.content-center {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center; /* Centered for intro/exam */
+	padding: 40px 20px;
+	overflow-y: auto;
+}
+
+/* Fix for long results list cutting off at the top */
+.content-center.screen-results-active {
+	align-items: flex-start !important;
+}
+
+.container {
+	background: var(--container-bg);
+	width: 100%;
+	max-width: 650px;
+	padding: 40px;
+	border-radius: 16px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	transition: background 0.3s ease;
+}
+
+/* ---------- 4. BUTTONS ---------- */
+button {
+	cursor: pointer;
+	border: none;
+	border-radius: 8px;
+	padding: 14px 28px;
+	font-size: 1rem;
+	font-weight: 600;
+	transition:
+		transform 0.1s,
+		background 0.2s;
+}
+
+button:active {
+	transform: scale(0.98);
+}
+
+.btn-primary {
+	background: var(--primary);
+	color: white;
+	width: 100%;
+}
+
+.btn-primary:hover {
+	background: var(--primary-dark);
+}
+
+.btn-secondary {
+	background: var(--secondary-btn);
+	color: var(--secondary-btn-text);
+	border: 1px solid var(--border-color);
+}
+
+.btn-outline {
+	background: transparent;
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
+	margin: 5px;
+}
+
+.btn-theme {
+	background: rgba(255, 255, 255, 0.1);
+	color: white;
+	font-size: 0.8rem;
+	padding: 8px 12px;
+	margin-bottom: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	width: 100%;
+}
+
+.button-stack {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 100%;
+	margin-top: 20px;
+}
+
+/* ---------- 5. EXAM COMPONENTS ---------- */
+#questionDescription {
+	display: block;
+	min-height: 1.2em;
+	font-size: 0.9rem;
+	color: var(--text-muted);
+	margin-bottom: 8px;
+	font-weight: 400;
+	letter-spacing: 0.5px;
+}
+
+#questionText {
+	font-size: 1.25rem;
+	font-weight: 600;
+	line-height: 1.5;
+	margin-bottom: 20px;
+}
+
+/* Visualizers */
+.mic-test-container {
+	background: var(--input-bg);
+	padding: 15px;
+	border-radius: 8px;
+	margin: 20px 0;
+	border: 1px solid var(--border-color);
+}
+
+#wave,
+#micTestWave {
+	width: 100%;
+	height: 80px;
+	background: var(--input-bg);
+	border-radius: 4px;
+}
+
+#recordingIndicator {
+	color: green;
+	margin: auto;
+}
+
+#recordingIndicator.active {
+	display: block;
+	animation: flash-text 1s infinite;
+}
+
+/* Progress Bars */
+.progress-outer {
+	width: 100%;
+	height: 12px;
+	background: var(--border-color);
+	border-radius: 6px;
+	margin: 20px 0;
+	overflow: hidden;
+}
+
+.progress-inner {
+	height: 100%;
+	width: 0%;
+	background: var(--primary);
+	transition: width 1s linear;
+}
+
+.flash {
+	background: #e74c3c !important;
+	animation: pulse-red 0.5s infinite;
+}
+
+/* ---------- 6. SIDEBAR ELEMENTS ---------- */
+.badge-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 8px;
+	margin-top: 15px;
+}
+
+.sidebar-theme {
+	background: rgba(255, 255, 255, 0.1);
+	color: white;
+	font-size: 0.8rem;
+	padding: 8px 12px;
+	margin-bottom: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 8px;
+	width: 100%;
+	text-align: center;
+}
+
+.status-dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.status-dot.saved {
+	background: var(--primary);
+	box-shadow: 0 0 8px var(--primary);
+}
+
+.status-dot.skipped {
+	background: #f39c12;
+}
+
+.status-dot.active {
+	background: white;
+	animation: pulse 1.5s infinite;
+}
+
+/* ---------- 7. RESULTS SCREEN ---------- */
+.results-scroll {
+	width: 100%;
+	margin-top: 20px;
+	text-align: left;
+}
+
+.review {
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.review h3 {
+	color: var(--primary);
+	margin-bottom: 10px;
+}
+
+.transcript-box {
+	margin-top: 10px;
+	padding: 12px;
+	background: var(--bg-color);
+	border-radius: 6px;
+	font-style: italic;
+}
+
+.version-buttons {
+	display: flex;
+	gap: 5px;
+	background: rgba(0, 0, 0, 0.2);
+	padding: 5px;
+	border-radius: 8px;
+	margin-bottom: 20px;
+}
+
+.version-switcher {
+	text-align: center;
+}
+
+.ver-btn {
+	flex: 1;
+	padding: 8px !important;
+	font-size: 0.8rem !important;
+	background: transparent;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+.ver-btn.active {
+	background: var(--primary);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- 8. ANIMATIONS ---------- */
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(1.3);
+		opacity: 0.7;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes pulse-red {
+	0% {
+		background-color: #e74c3c;
+	}
+	50% {
+		background-color: #c0392b;
+	}
+	100% {
+		background-color: #e74c3c;
+	}
+}
+
+@keyframes flash-text {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/* ---------- 9. SCREENS ---------- */
+.screen {
+	display: none;
+}
+.screen.active {
+	display: block;
+}
+
+/* ---------- 10. MOBILE RESPONSIVENESS ---------- */
+@media (max-width: 768px) {
+	.layout-wrapper {
+		flex-direction: column;
+	}
+	.sidebar {
+		width: 100%;
+		height: auto;
+		padding: 15px 20px;
+	}
+	.logo {
+		margin-bottom: 10px;
+	}
+	.content-center {
+		align-items: flex-start;
+		padding: 20px 10px;
+	}
+	.container {
+		padding: 20px;
+	}
+}

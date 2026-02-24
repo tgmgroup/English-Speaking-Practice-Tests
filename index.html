@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BCT-S Practice Portal</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="layout-wrapper">
+			<aside class="sidebar">
+				<div class="title">BCT-S Sample Test</div>
+				<div class="logo">BCT-S Sample Test</div>
+				<div class="version-switcher">
+					<p class="nav-label">Select Test Version</p>
+					<div class="version-buttons">
+						<button onclick="switchVersion('A')" id="btnVerA" class="ver-btn">
+							A
+						</button>
+						<button onclick="switchVersion('B')" id="btnVerB" class="ver-btn">
+							B
+						</button>
+						<button onclick="switchVersion('C')" id="btnVerC" class="ver-btn">
+							C
+						</button>
+					</div>
+				</div>
+				<div class="nav-group">
+					<div class="nav-label">Current Progress</div>
+					<div id="progressTracker">Waiting...</div>
+					<div id="statusBadges" class="badge-grid"></div>
+				</div>
+
+				<div class="sidebar-footer">
+					<button id="themeToggle" class="btn-theme">🌙 Dark Mode</button>
+					<p class="sidebar-theme">Version 2.0.5</p>
+				</div>
+			</aside>
+
+			<main class="content-center">
+				<div class="container">
+					<section id="intro" class="screen active">
+						<h1>Welcome to the BCTS Speaking Test</h1>
+						<p>
+							You will answer some questions about yourself and then do three
+							short speaking tasks.
+						</p>
+						<p>
+							Listen to the instructions and speak clearly into the microphone
+							when you hear the signal.
+						</p>
+						<p>Each part of the test will appear automatically.</p>
+						<p>The test will take about 12 minutes.</p>
+						<br /><br />
+
+						<p>Before we get started, let's test your microphone.</p>
+
+						<div class="mic-test-container">
+							<canvas id="micTestWave" width="300" height="60"></canvas>
+							<small
+								>It's important to make sure we can hear you clearly so we can
+								mark your response (On the real test, there will be a microphone
+								check).</small
+							>
+						</div>
+
+						<div class="instructions">
+							<ul>
+								<li>Ensure you are in a quiet room.</li>
+								<li>Speak clearly into the microphone.</li>
+								<li>Follow the "Preparation" and "Speaking" timers.</li>
+							</ul>
+						</div>
+
+						<div id="startOptions" class="button-stack">
+							<button id="startBtn" class="btn-primary">Start New Test</button>
+							<button
+								id="continueBtn"
+								class="btn-secondary"
+								style="display: none; margin-top: 10px"
+							>
+								Continue Previous Test
+							</button>
+						</div>
+					</section>
+
+					<section id="thinking" class="screen">
+						<h2 class="status-label">Preparation Time</h2>
+						<p>Review the question and prepare your response.</p>
+						<div id="thinkBar" class="progress-outer">
+							<div id="thinkFill" class="progress-inner"></div>
+						</div>
+					</section>
+
+					<section id="exam" class="screen">
+						<div class="exam-header">
+							<h3 id="partTitle">Part Title</h3>
+						</div>
+
+						<div class="question-box">
+							<p id="questionDescription"></p>
+							<p id="questionText">Question loading...</p>
+							<div id="prepArea" style="display: none; margin-top: 20px">
+								<small
+									style="
+										color: var(--primary);
+										font-weight: bold;
+										text-transform: uppercase;
+									"
+									>Preparation Time</small
+								>
+								<div class="progress-outer">
+									<div
+										id="prepFill"
+										class="progress-inner"
+										style="background: #3498db"
+									></div>
+								</div>
+							</div>
+							<div id="imageArea"></div>
+						</div>
+
+						<div class="visualizer-box">
+							<canvas id="wave" width="320" height="90"></canvas>
+							<div id="recordingIndicator">● Recording<br /><br /></div>
+						</div>
+
+						<div id="timeBar" class="progress-outer">
+							<div id="timeFill" class="progress-inner"></div>
+						</div>
+
+						<div class="controls">
+							<button id="skipBtn" class="btn-secondary">Next ▶</button>
+						</div>
+					</section>
+
+					<section id="results" class="screen">
+						<h2>Test Summary</h2>
+						<div id="reviewList" class="results-scroll"></div>
+
+						<div class="results-actions">
+							<button id="restartBtn" class="btn-outline">Restart</button>
+							<button id="versionBtn" class="btn-outline">
+								Change Version
+							</button>
+						</div>
+					</section>
+				</div>
+			</main>
+		</div>
+
+		<script type="module" src="app.js"></script>
+	</body>
+</html>
