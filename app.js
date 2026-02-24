@@ -496,3 +496,19 @@ window.switchVersion = function (ver) {
 
 // Call this on page load
 updateVersionUI();
+
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.querySelector(".sidebar");
+
+if (menuToggle) {
+	menuToggle.onclick = () => {
+		sidebar.classList.toggle("open");
+		menuToggle.textContent = sidebar.classList.contains("open") ? "✕" : "☰";
+	};
+}
+
+// Optional: Close sidebar when clicking anywhere on the main content
+document.querySelector(".content-center").onclick = () => {
+	sidebar.classList.remove("open");
+	if (menuToggle) menuToggle.textContent = "☰";
+};

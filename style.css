@@ -117,14 +117,15 @@ html {
 	text-align: center;
 }
 
-/* Main Content Area */
 .content-center {
 	flex: 1;
 	display: flex;
 	justify-content: center;
-	align-items: center; /* Centered for intro/exam */
-	padding: 40px 20px;
+	/* Use padding instead of centering for better overflow handling */
+	align-items: flex-start;
+	padding: 20px 20px; /* Generous padding for desktop */
 	overflow-y: auto;
+	height: auto;
 }
 
 /* Fix for long results list cutting off at the top */
@@ -414,22 +415,84 @@ button:active {
 
 /* ---------- 10. MOBILE RESPONSIVENESS ---------- */
 @media (max-width: 768px) {
+	.menu-hamburger {
+		display: block; /* Show only on mobile */
+		position: fixed;
+		top: 15px;
+		left: 15px;
+		z-index: 100;
+		background: var(--primary);
+		color: white;
+		border-radius: 5px;
+		padding: 10px 15px;
+	}
+
+	.sidebar {
+		position: fixed;
+		left: -100%; /* Hide off-screen */
+		top: 0;
+		height: 100%;
+		width: 260px;
+		z-index: 90;
+		transition: left 0.3s ease;
+		box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+	}
+
+	/* When the sidebar has the 'open' class */
+	.sidebar.open {
+		left: 0;
+	}
+
+	.content-center {
+		/* Ensure content starts below the hamburger button */
+		padding-top: 20px;
+		padding-bottom: 20px;
+		align-items: flex-start; /* Force top-alignment */
+		display: block; /* Switch to block to let natural scrolling work */
+	}
+
+	.container {
+		margin: 0 auto;
+		padding: 24px 16px;
+		width: 100%;
+		max-width: 100%;
+		/* Remove fixed heights if any exist */
+		height: auto;
+	}
 	.layout-wrapper {
 		flex-direction: column;
 	}
-	.sidebar {
+
+	/* Ensure images don't push content off-screen */
+	#imageArea {
 		width: 100%;
-		height: auto;
-		padding: 15px 20px;
-	}
-	.logo {
+
+		margin: auto; /* Centers the image */
 		margin-bottom: 10px;
+		display: flex;
+		justify-content: center;
 	}
-	.content-center {
-		align-items: flex-start;
-		padding: 20px 10px;
+	#imageArea img {
+		width: auto;
+		max-width: 100%;
+		/* Limit height so it doesn't push the question off-screen */
+		height: 10%;
+		max-height: 300px;
+		object-fit: contain; /* Ensures the image isn't distorted */
+		border-radius: 8px;
+		margin-bottom: 15px;
 	}
-	.container {
-		padding: 20px;
+
+	#imageArea img:active {
+		transform: scale(1.5);
+		z-index: 999;
+		transition: transform 0.2s;
+	}
+}
+
+/* Hide hamburger on desktop */
+@media (min-width: 769px) {
+	.menu-hamburger {
+		display: none;
 	}
 }
