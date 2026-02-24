@@ -1,12 +1,12 @@
 /* ---------- 1. VARIABLES & THEMES ---------- */
+
+/* 1. Default Light Mode */
 :root {
-	/* Primary Colors */
 	--primary: #4caf50;
 	--primary-dark: #388e3c;
 	--dark: #2c3e50;
 	--sidebar-w: 260px;
 
-	/* Light Mode (Default) */
 	--bg-color: #f0f2f5;
 	--container-bg: #ffffff;
 	--text-color: #333333;
@@ -17,8 +17,22 @@
 	--input-bg: #fdfdfd;
 }
 
+/* 2. System Dark Mode (Automatic) */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: #121212;
+		--container-bg: #1e1e1e;
+		--text-color: #e0e0e0;
+		--text-muted: #a0a0a0;
+		--border-color: #333333;
+		--secondary-btn: #2d2d2d;
+		--secondary-btn-text: #e0e0e0;
+		--input-bg: #252525;
+	}
+}
+
+/* 3. Manual Override (The Toggle Button) */
 [data-theme="dark"] {
-	/* Dark Mode Overrides */
 	--bg-color: #121212;
 	--container-bg: #1e1e1e;
 	--text-color: #e0e0e0;

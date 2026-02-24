@@ -24,25 +24,25 @@ This test primarily simulates the British Council BCT-S English speaking test. I
 
 [(Back to top)](#table-of-contents)
 
-Access the demo here: [English Activities](https://tgmgroup.github.io/English-speaking-practice-tests/)
+Access the demo here: [English Speaking Practice Tests](https://tgmgroup.github.io/English-Speaking-Practice-Tests/)
 
 # 📁 PROJECT STRUCTURE
 
 /BCT-S-Practice
 │
-├── index.html # Main entry point (the UI structure)
-├── style.css # The complete CSS file with Dark Mode
-├── app.js # Main logic (recording, transcription, timers)
-├── questions.js # Your question data (Versions A, B, and C) -- edit these questions!
-├── manifest.json # PWA configuration and icon paths
-├── sw.js # Service Worker for offline support
+├── index.html # Main entry point
+├── style.css # CSS with Dark Mode
+├── app.js # Logic (recording, transcript, timers)
+├── questions.js # Question data (Versions A, B, C)
+├── manifest.json # PWA configuration
+├── sw.js # Service Worker
 │
-└── /images # All visual assets
-&nbsp;&nbsp;&nbsp;&nbsp;├── icon-192.png # Manifest icon (Small)
-&nbsp;&nbsp;&nbsp;&nbsp;├── icon-512.png # Manifest icon (Large)
-&nbsp;&nbsp;&nbsp;&nbsp;├── A-Image2.png # Edit these images -- Change A to B or C (or D) and the &nbsp;&nbsp;&nbsp;&nbsp;file type if necessary
-&nbsp;&nbsp;&nbsp;&nbsp;├── A-Image3.png
-&nbsp;&nbsp;&nbsp;&nbsp;├── A-Image4.png
+└── /images # Visual assets
+├── icon-192.png
+├── icon-512.png
+├── A-Image2.png # Question Image
+├── A-Image3.png
+└── A-Image4.png
 
 # Contribute
 
